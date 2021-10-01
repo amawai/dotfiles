@@ -2,11 +2,9 @@
 # Run by github/github codespaces after starting
 
 # Use ZSH as my default shell (e.g. for SSH)
-if ! grep -q "root.*/bin/zsh" /etc/passwd
-then
-  chsh -s /bin/zsh root
-fi
+chsh -s $(which zsh)
 
-# Install some developer tools and setup Linux how I like it
 apt-get install -y \
-  exa grc ripgrep shellcheck zsh-autosuggestions 
+  exa grc ripgrep shellcheck zsh-autosuggestions
+
+git config --global pager.branch false
