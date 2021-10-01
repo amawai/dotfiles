@@ -3,6 +3,8 @@
 # Use ZSH as the default shell
 chsh -s $(which zsh)
 
+git config --global pager.branch false
+
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 test -r ~/.zshrc && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.zshrc
 echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.profile
