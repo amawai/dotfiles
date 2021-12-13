@@ -11,22 +11,21 @@ if [ -z "$(brew --version 2>/dev/null)" ]; then
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   test -r ~/.zshrc && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.zshrc
   echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.profile
+
+  if ! grep -Fq "p10k-instant-prompt" ~/.zshrc; then
+    brew install romkatv/powerlevel10k/powerlevel10k
+    echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+
+    cp ./.p10k.zsh ~/.p10k.zsh
+
+    sed -i '1iif [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then\n  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"\nfi' ~/.zshrc
+    echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
+  fi
 fi
 
 if [ ! -d "~/zsh-syntax-highlighting" ] ; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
   echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 fi
-
-if ! grep -Fq "p10k-instant-prompt" ~/.zshrc; then
-  brew install romkatv/powerlevel10k/powerlevel10k
-  echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
-
-  cp ./.p10k.zsh ~/.p10k.zsh
-
-  sed -i '1iif [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then\n  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"\nfi' ~/.zshrc
-  echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
-fi
-
 
 source ~/.zshrc
