@@ -7,7 +7,7 @@ git config --global pager.branch false
 git config --global core.editor "vim"
 
 # This assumes brew is installed ... TODO: install script if it isn't
-if [ -z "$(brew --version 2>/dev/null)" ]; then
+if ! hash brew &> /dev/null; then
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   test -r ~/.zshrc && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.zshrc
   echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.profile
