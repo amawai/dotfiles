@@ -6,6 +6,10 @@ chsh -s $(which zsh)
 git config --global pager.branch false
 git config --global core.editor "vim"
 
+# If no zsh do the following (test this out) 
+# apt install zsh 
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # This assumes brew is installed ... TODO: install script if it isn't
 if ! hash brew &> /dev/null; then
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
