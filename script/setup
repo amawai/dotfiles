@@ -12,12 +12,12 @@ else
   # Get zsh
   rm /etc/zsh/zlogin # ¯\_(ツ)_/¯
   apt install zsh -yq
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+  # since the terminal switches to zsh, everything hangs
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed '/exec zsh -l/d')"
   git config --global color.ui true
   git config --global core.pager 'less -r'
   # Let's add a nice theme
-  sed -i 's/ZSH_THEME="norm"/ZSH_THEME="muse"/' ~/.zshrc
-  zsh
+  sed -i 's/ZSH_THEME="norm"/ZSH_THEME="sed -i 's/ZSH_THEME="norm"/ZSH_THEME="muse"/' ~/.zshrc"/' ~/.zshrc
 fi
 
 if command -v brew; then
