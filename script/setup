@@ -14,8 +14,12 @@ else
   apt install zsh -yq
   # since the terminal switches to zsh, everything hangs
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed '/exec zsh -l/d')"
+  
+  apt install less
+  
   git config --global color.ui true
   git config --global core.pager 'less -r'
+  
   # Let's add a nice theme
   sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="norm"/' ~/.zshrc
 fi
@@ -41,5 +45,3 @@ if command -v brew; then
   fi  
    source ~/.zshrc
 fi
-
-zsh
