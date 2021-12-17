@@ -13,6 +13,8 @@ else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
   git config --global color.ui true
   git config --global core.pager 'less -r'
+  # Let's add a nice theme
+  sed -i 's/ZSH_THEME="norm"/ZSH_THEME="muse"/' ~/.zshrc
   zsh
 fi
 
