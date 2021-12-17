@@ -17,7 +17,7 @@ else
   git config --global color.ui true
   git config --global core.pager 'less -r'
   # Let's add a nice theme
-  sed -i 's/ZSH_THEME="norm"/ZSH_THEME="sed -i 's/ZSH_THEME="norm"/ZSH_THEME="muse"/' ~/.zshrc"/' ~/.zshrc
+  sed -i 's/ZSH_THEME="norm"/ZSH_THEME="robbyrussell"/' ~/.zshrc
 fi
 
 if command -v brew; then
