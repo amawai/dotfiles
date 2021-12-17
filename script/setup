@@ -6,11 +6,6 @@ chsh -s $(which zsh)
 git config --global pager.branch false
 git config --global core.editor "vim"
 
-# If no zsh do the following (test this out) 
-# apt install zsh 
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# This assumes brew is installed ... TODO: install script if it isn't
 if ! hash brew &> /dev/null; then
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   test -r ~/.zshrc && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.zshrc
@@ -25,6 +20,11 @@ if ! hash brew &> /dev/null; then
     sed -i '1iif [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then\n  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"\nfi' ~/.zshrc
     echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
   fi
+else
+  # Settle with using zsh if no brew since brew takes 5ever
+  apt install zsh -yq
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+  zsh
 fi
 
 if [ ! -d "~/zsh-syntax-highlighting" ] ; then
