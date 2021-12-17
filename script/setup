@@ -1,12 +1,14 @@
 #!/bin/bash
 
 # Use ZSH as the default shell
-chsh -s $(which zsh)
+if command -v zsh; then
+  chsh -s $(which zsh)
+fi
 
 git config --global pager.branch false
 git config --global core.editor "vim"
 
-if ! hash brew &> /dev/null; then
+if command -v brew; then
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   test -r ~/.zshrc && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.zshrc
   echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.profile
