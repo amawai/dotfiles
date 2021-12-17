@@ -20,11 +20,11 @@ if ! hash brew &> /dev/null; then
     sed -i '1iif [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then\n  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"\nfi' ~/.zshrc
     echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
   fi
-else
-  # Settle with using zsh if no brew since brew takes 5ever
-  apt install zsh -yq
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
-  zsh
+#else (doesn't work at the moment)
+#  # Settle with using zsh if no brew since brew takes 5ever
+#  apt install zsh -yq
+#  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+#  zsh
 fi
 
 if [ ! -d "~/zsh-syntax-highlighting" ] ; then
