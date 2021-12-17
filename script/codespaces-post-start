@@ -7,4 +7,3 @@ chsh -s $(which zsh)
 apt-get install -y \
   exa grc ripgrep shellcheck zsh-autosuggestions
 
-zsh
