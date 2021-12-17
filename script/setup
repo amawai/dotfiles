@@ -10,6 +10,8 @@ if command -v zsh; then
   chsh -s $(which zsh)
 else
   # Get zsh
+  rm /etc/zsh/zlogin # ¯\_(ツ)_/¯
+  apt install zsh -yq
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
   git config --global color.ui true
   git config --global core.pager 'less -r'
