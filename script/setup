@@ -1,12 +1,19 @@
 #!/bin/bash
+apt-get update
+apt-get install vim -y
+
+git config --global pager.branch false
+git config --global core.editor "vim"
 
 # Use ZSH as the default shell
 if command -v zsh; then
   chsh -s $(which zsh)
+  
+  if [ ! -d "~/zsh-syntax-highlighting" ] ; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
+    echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+  fi
 fi
-
-git config --global pager.branch false
-git config --global core.editor "vim"
 
 if command -v brew; then
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -29,9 +36,6 @@ if command -v brew; then
 #  zsh
 fi
 
-if [ ! -d "~/zsh-syntax-highlighting" ] ; then
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
-  echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+if command -v zsh; then
+  source ~/.zshrc
 fi
-
-source ~/.zshrc
