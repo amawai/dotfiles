@@ -8,11 +8,12 @@ git config --global core.editor "vim"
 # Use ZSH as the default shell
 if command -v zsh; then
   chsh -s $(which zsh)
-  
-  if [ ! -d "~/zsh-syntax-highlighting" ] ; then
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
-    echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-  fi
+else
+  # Get zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+  git config --global color.ui true
+  git config --global core.pager 'less -r'
+  zsh
 fi
 
 if command -v brew; then
@@ -29,13 +30,12 @@ if command -v brew; then
     sed -i '1iif [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then\n  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"\nfi' ~/.zshrc
     echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
   fi
-#else (doesn't work at the moment)
-#  # Settle with using zsh if no brew since brew takes 5ever
-#  apt install zsh -yq
-#  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
-#  zsh
 fi
 
-if command -v zsh; then
-  source ~/.zshrc
+if [ ! -d "~/zsh-syntax-highlighting" ] ; then
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
+  echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 fi
+
+ source ~/.zshrc
+
