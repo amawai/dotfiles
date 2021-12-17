@@ -8,3 +8,5 @@ apt-get install -y \
   exa grc ripgrep shellcheck zsh-autosuggestions
 
 git config --global pager.branch false
+
+zsh
