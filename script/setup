@@ -17,7 +17,12 @@ else
   git config --global color.ui true
   git config --global core.pager 'less -r'
   # Let's add a nice theme
-  sed -i 's/ZSH_THEME="norm"/ZSH_THEME="robbyrussell"/' ~/.zshrc
+  sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="norm"/' ~/.zshrc
+fi
+
+if [ ! -d "~/zsh-syntax-highlighting" ] ; then
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
+  echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 fi
 
 if command -v brew; then
@@ -33,13 +38,8 @@ if command -v brew; then
 
     sed -i '1iif [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then\n  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"\nfi' ~/.zshrc
     echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
-  fi
+  fi  
+   source ~/.zshrc
 fi
 
-if [ ! -d "~/zsh-syntax-highlighting" ] ; then
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
-  echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-fi
-
- source ~/.zshrc
-
+zsh
