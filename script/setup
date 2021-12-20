@@ -5,10 +5,10 @@ apt-get install vim -y
 git config --global pager.branch false
 git config --global core.editor "vim"
 
-# Use ZSH as the default shell
-if command -v zsh; then
-  chsh -s $(which zsh)
-else
+# Use ZSH as the default shell, error may be thrown
+chsh -s $(which zsh)
+
+if ! command -v zsh; then
   # Get zsh
   rm /etc/zsh/zlogin # ¯\_(ツ)_/¯
   apt install zsh -yq
