@@ -8,5 +8,5 @@ then
 fi
 
 
-apt-get install -y \
+sudo apt-get install -y \
   exa grc ripgrep shellcheck zsh-autosuggestions
