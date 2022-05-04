@@ -1,6 +1,6 @@
 #!/bin/bash
-apt-get update
-apt-get install vim -y
+sudo apt-get update
+sudo apt-get install vim -y
 
 git config --global pager.branch false
 git config --global core.editor "vim"
@@ -11,11 +11,11 @@ chsh -s $(which zsh)
 if ! command -v zsh; then
   # Get zsh
   rm /etc/zsh/zlogin # ¯\_(ツ)_/¯
-  apt install zsh -yq
+  sudo apt install zsh -yq
   # since the terminal switches to zsh, everything hangs
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed '/exec zsh -l/d')"
   
-  apt install less
+  sudo apt install less
   
   git config --global color.ui true
   git config --global core.pager 'less -r'
