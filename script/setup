@@ -5,6 +5,9 @@ sudo apt-get install vim -y
 git config --global pager.branch false
 git config --global core.editor "vim"
 
+# remove existing init scripts
+rm -f "$HOME/.zshrc"
+
 # Use ZSH as the default shell, error may be thrown
 sudo chsh -s $(which zsh)
 
@@ -44,5 +47,6 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
     echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
   fi  
    source ~/.zshrc
-   $(which zsh)
 fi
+
+sudo chsh -s "$(which zsh)" "$(whoami)"
