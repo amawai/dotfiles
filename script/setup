@@ -50,4 +50,3 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
 fi
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
-sudo su vscode
