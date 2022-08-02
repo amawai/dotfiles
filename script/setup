@@ -44,4 +44,5 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
     echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
   fi  
    source ~/.zshrc
+   $(which zsh)
 fi
