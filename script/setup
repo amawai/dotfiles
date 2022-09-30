@@ -40,6 +40,7 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   if ! grep -Fq "p10k-instant-prompt" ~/.zshrc; then
     brew install romkatv/powerlevel10k/powerlevel10k
     echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+    echo "export LANG=C.UTF-8" >>! ~/.zshrc
 
     cp ./.p10k.zsh ~/.p10k.zsh
 
