@@ -43,8 +43,9 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
     echo "export LANG=C.UTF-8" >>~/.zshrc
 
     cp ./.p10k.zsh ~/.p10k.zsh
-
-    sed -i  '1iif [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then\n  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"\nfi' ~/.zshrc
+     
+    # Commenting out instant prompt for now 
+    # sed -i  '1iif [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then\n  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"\nfi' ~/.zshrc
     echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
   fi  
    source ~/.zshrc
