@@ -32,6 +32,10 @@ if [ ! -d "~/zsh-syntax-highlighting" ] ; then
   echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 fi
 
+if [! -d "npm --version"] ; then
+  npm install -g @githubnext/github-copilot-cli
+fi
+
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   test -r ~/.zshrc && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.zshrc
