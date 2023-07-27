@@ -22,7 +22,7 @@ if ! command -v zsh; then
   
   git config --global color.ui true
   git config --global core.pager 'less -r'
-  
+
   # Let's add a nice theme
   sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="norm"/' ~/.zshrc
 fi
@@ -53,6 +53,10 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
     echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
   fi  
    source ~/.zshrc
+else 
+   echo "export ZSH=\"$HOME/.oh-my-zsh\"" >> ${ZDOTDIR:-$HOME}/.zshrc
+   echo "ZSH_THEME=\"norm\"" >> ${ZDOTDIR:-$HOME}/.zshrc 
+   echo "source $ZSH/oh-my-zsh.sh" >> ${ZDOTDIR:-$HOME}/.zshrc
 fi
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
